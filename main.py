@@ -40,7 +40,7 @@ def publish(client):
         msg1 = random.randint(0, 100)
         result1 = client.publish(topic_brightness, msg1)
         status1 = result1[0]
-        if status == 0 & status1 ==0:
+        if status == 0 & status1 == 0:
             print(f"Send `{msg}` to topic `{topic_state}`")
             print(f"Send `{msg1}` to topic `{topic_brightness}`")
         else:

@@ -38,7 +38,7 @@ def subscribe(client: mqtt_client):
         global bulb_state, bulb_brightness
         #print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
         if msg.topic == 'smart-light-bulb/state':
-            bulb_state = msg.payload.decode();
+            bulb_state = int(msg.payload.decode());
 
         elif msg.topic == 'smart-light-bulb/brightness':
             bulb_brightness = msg.payload.decode();
@@ -57,10 +57,12 @@ def run():
     client.loop_forever()
 
 def printBulbState():
-    if bulb_state ==0:
+    if bulb_state == 0:
         print("light Bulb is off")
-    else:
+    elif bulb_state == 1:
         print("light Bulb is on")
+    else:
+        print("ERROR")
     print("light bulb brightness is set to:" + str(bulb_brightness)+"\n");
     print("==============================")
 
